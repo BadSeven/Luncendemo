@@ -1,6 +1,6 @@
 package com.yx.lucence;
 
-import com.yx.index.Article;
+
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -54,7 +54,7 @@ public class apps {
         Version version = Version.LUCENE_30;
         Analyzer analyzer  = new StandardAnalyzer(version);
         IndexWriter.MaxFieldLength maxFieldLength = IndexWriter.MaxFieldLength.LIMITED;
-        Directory directory = FSDirectory.open(new File("j:/db"));
+        Directory directory = FSDirectory.open(new File("F:/db"));
         IndexWriter indexWriter = new IndexWriter(directory,analyzer,maxFieldLength);
         //把document写入lucence库
         indexWriter.addDocument(document);
@@ -63,7 +63,7 @@ public class apps {
     public void findindexdbkey(String key) throws IOException, ParseException {
         List<Article> list = new ArrayList<Article>();
         Version version = Version.LUCENE_30;
-        Directory directory = FSDirectory.open(new File("j:/db"));
+        Directory directory = FSDirectory.open(new File("F:/db"));
         //创建搜索接口指定在那个位置
         IndexSearcher indexSearcher =   new IndexSearcher(directory);
         //分词器
@@ -98,11 +98,7 @@ public class apps {
         for(Article a:list){
             System.out.println( a.toString());
         }
-
-
     }
-
-
     public static void main(String[] args) throws IOException, ParseException {
         apps app = new apps();
         app.createIndexDB();
